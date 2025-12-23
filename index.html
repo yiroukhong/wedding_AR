@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heritage House AR</title>
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    #instructions {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-family: Arial, sans-serif;
+      z-index: 999;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="instructions">
+    Point camera at markers to see wedding scenes
+  </div>
+
+  <a-scene
+    embedded
+    arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+    
+    <!-- Marker 1: Wedding Couple on Chair -->
+    <a-marker preset="hiro">
+      <a-image 
+        src="assets/images/couple_sitting.png"
+        position="0 0.5 0"
+        rotation="-90 0 0"
+        width="1.2"
+        height="1.8"
+        opacity="0.95">
+      </a-image>
+    </a-marker>
+
+    <!-- Marker 2: Guest 1 -->
+    <a-marker type="pattern" url="assets/markers/pattern-cermony_1.patt">
+      <a-image 
+        src="assets/images/cermony_1.jpg"
+        position="0 0.5 0"
+        rotation="-90 0 0"
+        width="1"
+        height="1.5"
+        opacity="0.95">
+      </a-image>
+    </a-marker>
+
+    <!-- Marker 3: Guest 2 -->
+    <a-marker type="pattern" url="assets/markers/pattern-cermony_2.patt">
+      <a-image 
+        src="assets/images/cermony_2.jpg"
+        position="0 0.5 0"
+        rotation="-90 0 0"
+        width="1"
+        height="1.6"
+        opacity="0.95">
+      </a-image>
+    </a-marker>
+
+    <!-- Marker 4: Musician -->
+    <a-marker type="pattern" url="assets/markers/pattern-cermony_3.patt">
+      <a-image 
+        src="assets/images/cermony_3.jpg"
+        position="0 0.5 0"
+        rotation="-90 0 0"
+        width="1"
+        height="1.4"
+        opacity="0.95">
+      </a-image>
+    </a-marker>
+
+    <!-- Marker 5: Food Server -->
+    <a-marker type="pattern" url="assets/markers/pattern-cermony_4.patt">
+      <a-image 
+        src="assets/images/cermony_4.jpg"
+        position="0 0.5 0"
+        rotation="-90 0 0"
+        width="1"
+        height="1.5"
+        opacity="0.95">
+      </a-image>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+
+  <script>
+    // Hide instructions after 5 seconds
+    setTimeout(() => {
+      document.getElementById('instructions').style.display = 'none';
+    }, 5000);
+  </script>
+
+</body>
+</html>
